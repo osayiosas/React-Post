@@ -1,15 +1,13 @@
-const names = ['Osaigbovo', 'Ernest'];
+import  './Post.Modules.css'
 
-export const Post = () =>
+export const Post = (props) =>
 {
-    
-    const choseName = Math.random() > 0.5 ? names[0] : names[1];
-
+   
     return (
-        <div>
-            <p>{ choseName }</p>
-            <p>React.js is Life </p>
-      </div>
+        <li className='post'>
+            <p className='author'>{props.author}</p>
+            <p className='text'>{props.body}</p>
+      </li>
   )
 }
 
