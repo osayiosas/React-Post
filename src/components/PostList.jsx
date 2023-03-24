@@ -1,14 +1,33 @@
+import { useState } from 'react';
+
 import NewPost from './NewPost';
 import Post from './Post';
 import './PostList.css';
 
-export const PostList = () => {
+export const PostList = () =>
+{
+  
+  const [enteredBody, setEnteredBody] = useState('');
+  const [enteredAuthor, setEnteredAuthor] = useState('');
+
+
+  const bodyHandler = (e) =>
+  {
+    setEnteredBody(e.target.value);
+
+  }
+
+  const authorHandler = (e) =>
+  {
+    setEnteredAuthor(e.target.value)
+  }
+
   return (
     <>
-      <NewPost />
+      <NewPost onBody={bodyHandler} onAuthor={ authorHandler } />
       <ul className="posts">
-        <Post author="Osaigbovo" body="React.js make sense small" />
-        <Post author="Ernest" body="check for the complete course" />
+        <Post author={enteredAuthor } body={enteredBody} />
+        <Post author="Ernest" body='Check out the full course' />
       </ul>
     </>
   );
