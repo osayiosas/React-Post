@@ -1,22 +1,47 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import './NewPost.css'
+import "./NewPost.css";
 
-export const NewPost = (props) =>
-{
-    
-    return (
-        <form className='form'> 
-            <p>
-                <label htmlFor="body">Text</label>
-                <textarea id="body" required rows={3} onChange={props.onBody}></textarea>
-            </p>
-            <p>
-                <label htmlFor="name">Your Name</label>
-                <input type='text' id="name" required onChange={props.onAuthor} />
-            </p>
-      </form>
-  )
-}
+export const NewPost = ({ onCancel }) => {
+  const [enteredBody, setEnteredBody] = useState("");
+  const [enteredAuthor, setEnteredAuthor] = useState("");
 
-export default NewPost
+  const bodyHandler = (event) => {
+    setEnteredBody(event.target.value);
+  };
+
+  const authorHandler = (event) => {
+    setEnteredAuthor(event.target.value);
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const postData = {
+      body: enteredBody,
+      author: enteredAuthor,
+    };
+  };
+
+  return (
+    <form className="form" onSubmit={submitHandler}>
+      <p>
+        <label htmlFor="body">Text</label>
+        <textarea id="body" required rows={3} onChange={bodyHandler} />
+      </p>
+      <p>
+        <label htmlFor="name">Your Name</label>
+        <input type="text" id="name" required onChange={authorHandler} />
+      </p>
+
+      <p className="actions">
+        <button type="button" onClick={onCancel}>
+          Cancel
+        </button>
+        <button>Submit</button>
+      </p>
+    </form>
+  );
+};
+
+export default NewPost;
