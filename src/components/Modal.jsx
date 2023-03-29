@@ -1,8 +1,8 @@
 import './Modal.css'
 
-export const Modal = ({ children, onClose }) => {
+export const Modal = ({ children }) => {
     return <> 
-        <div className='backdrop' onClick={onClose}>
+        <div className='backdrop' >
             <dialog open className='modal'>
                 {children}
             </dialog>
