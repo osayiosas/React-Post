@@ -1,10 +1,9 @@
 import { useState } from "react";
 import Post from "./Post";
-import NewPost from "./NewPost";
-import Modal from "./Modal";
+
 import "./PostList.css";
 
-export const PostList = ({ isPosting, onStopPosting }) => {
+export const PostList = () => {
   const [posts, setPosts] = useState([]);
 
   const addPostHandler = (postData) =>
@@ -14,12 +13,7 @@ export const PostList = ({ isPosting, onStopPosting }) => {
 
   return (
     <>
-      {isPosting && (
-        <Modal onClose={onStopPosting}>
-          <NewPost onCancel={onStopPosting} onAddPost={addPostHandler} />
-        </Modal>
-      )}
-
+     
       {posts.length > 0 && (
         <ul className="posts">
           {posts.map((post) => (
